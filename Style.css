@@ -1,0 +1,460 @@
+/*
+-container (div عشان الصفحه تكون بالنص)
+-overlay
+-opacity hover
+-section header
+-section padding
+-hover effect 1( left to right)
+-hover effect 1( top to bottom)
+*/
+/*1. general style*/
+.hover-opacity{
+  transition: opacity .5s;
+}
+.hover-opacity:hover{ /* عشان ما اعملها فكل بوتن ,هيك بعطي لكلاس لكل البتن اسهل */
+  opacity: 0.6 ;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* عشان المارجن و البادن ما بئثرو على الودث تبع العنصر*/
+}
+h1 , h2 ,h3 ,h4 ,h5 ,h6{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+button{
+  font-family:'Times New Roman', Times, serif;
+}
+.container{
+  width:80%;
+  margin: auto;
+}
+body{
+  font-family: 'Varela Round' , sans-serif;
+}
+.clear{
+  clear: both;
+}
+.pd-y{
+  padding: 120px;
+}
+.section-header{
+  text-align: center;
+}
+.section-header .section-title{
+  font-size: 35px;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+.line{
+  display: block;
+  height: 4px;
+  width: 60px;
+  background-color: #6195ff;
+  border-radius: 5px;
+  margin: 0px auto 70px auto;
+
+}
+/* الحركه الي بالصفحه التانيه اللون التحت الي بتحرك */
+.ltr-effect{
+  position: relative;
+}
+.ltr-effect:after{
+position: absolute;
+content: "";
+width: 0%;
+background-color: #333;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+transition: 0.5s;
+z-index: -1;
+}
+.ltr-effect:hover:after{
+  width: 100%;
+}
+.tb-effect{
+  position: relative;
+}
+.tb-effect:after{
+position: absolute;
+content: "";
+height: 0%;
+background-color: #333333;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+transition: 0.4s;
+z-index: -1;
+}
+.tb-effect:hover:after{
+  height: 100%;
+}
+/* 3.sections styles */
+/*A. header */
+.header{
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+.header .logo{
+  width: 40%;
+  float: left;
+}
+.header .logo img{
+  width: 20%;
+  height: 20%;
+  margin-top: 15px;
+}
+.header .navBar{
+  width :60%;
+  float: left;
+  list-style: none;
+  text-align: right;
+}
+.header .navBar li{ /* عشان اخليهَ جمب بعض*/
+  display: inline-block;
+  text-align: right;
+
+}
+.header .navBar li a{
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  text-decoration: none;
+  display: block;
+  padding: 20px 16px;
+}
+/* after هاي عشان الخط الي بيجي تحت الكلام الي بالهد*/
+.header .navBar li a:after,.header .navBar li a.active:after{
+border-radius: 5px;
+content: "";
+display: block;
+height: 3px;
+background-color: #6195ff;
+transition: width 0.3s;
+margin-top: 2px;
+}
+.header .navBar li a:after{
+width: 0%;
+}
+.header .navBar li a.active:after{
+  width: 100%;
+}
+.header .navBar li a:hover:after{
+  width: 100%;
+}
+/*B. Home div */
+.home{
+  height: 100vh;
+  background-image: url(/img/background1.jpg);
+  background-size:cover ;
+  position: relative;
+}
+.overlay{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.home-content{
+  position: absolute;
+  width: 65%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+
+}
+.home .titel{
+  color: rgb(255, 255, 255);
+  font-size: 3.5rem;/*3rem  اضرب 4 بحجم نص ال اتش تي ام ال */
+  text-transform: uppercase;
+}
+.home-desc{
+  margin: 20px 0;
+  letter-spacing: 2px;
+  line-height: 1.5;
+  color: rgb(255, 255, 255);
+}
+.btn{
+  width: 200px;
+  padding: 15px 0;
+  border-radius: 5px;
+  border: 0;
+  cursor: pointer;
+  font-size: 18px;
+}
+.btn-start{
+  margin-right: 10px;
+  background-color: rgb(255, 255, 255);
+}
+.btn-learn{
+  background-color: #6195ff;
+  color: #fff;
+}
+
+/*C. About div */
+.about-content {
+  overflow: hidden;
+}
+.about-item {
+  width: 30%;
+  float: left;
+  text-align: center;
+  border: 1px solid #e8e8e8;
+  padding: 50px 20px;
+}
+.about-item:hover .about-item-title{
+  color: #ffffff;
+}
+.about-item.mg{
+  margin: 0 5%;
+}
+.about-item .icon{
+  color:#6195ff;
+  margin-bottom: 10px;
+}
+.about-item-title{
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  transition: 0.5s;
+}
+.about-item-desc{
+  line-height: 1.5;
+  margin-bottom: 10px;
+  color: #999;
+}
+.about-item-link{
+  color: #6195ff;
+  text-transform: capitalize;
+}
+/*D. Portfio div */
+.portfolio{
+  background: #f9f9f9;
+}
+.portfolio-content{
+overflow:hidden ;
+}
+.portfolio-item{
+  width: 30%;
+  float: left;
+  margin-bottom: 40px;
+  position: relative;
+  padding: 15px;
+}
+.portfolio-item .layer-content{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s;
+}
+.portfolio-item:hover .layer-content{
+  opacity: 1;
+  visibility: visible;
+}
+.portfolio-item.mg{
+  margin: 0 5%;
+}
+.layer-content .layer-info{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 80%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+.layer-content .cat{
+  color: #6195ff;
+  text-transform: uppercase;
+  display:block;
+  margin-bottom: 4px;
+  position: relative;
+  top: 10px;
+  opacity: 0;
+  transition: top 0.5s,opacity 0.5s;
+  transition-delay: 0.2s;
+}
+.layer-content-title{
+font-size: 20px;
+color: #ffffff;
+margin-bottom:4px ;
+position: relative;
+top: 10px;
+opacity: 0;
+transition: top 0.5s,opacity 0.5s;
+transition-delay: 0.3s;
+}
+.layer-content a{
+  color: #ffffff;
+  position: relative;
+  top: 10px;
+  opacity: 0;
+  transition: top 0.5s,opacity 0.5s;
+  transition-delay: 0.4s;
+}
+.layer-content a i{
+  display:inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #4e81e7;
+
+}
+.portfolio-item:hover .layer-content-title,
+.portfolio-item:hover .layer-content .cat,
+.portfolio-item:hover .layer-content a{
+  top: 0;
+  opacity: 1;
+  visibility: visible;
+}
+.portfolio-item img{
+  width: 100%;
+}
+/*E. offer div */
+
+.offer-content{
+  overflow: hidden;/* عملتها عشان الفلوت */
+}
+.offer-item {
+  width: 30%;
+  float: left;
+  margin-bottom: 20px;
+  border: 1px solid #e8e8e8;
+  padding: 30px 15px 30px 70px;
+  position: relative;
+  font-size: small;
+}
+.offer-item.mg{
+  margin: 0 5%;
+}
+.offer-item .icon{
+  position: absolute;
+  left: 15px;
+  top: 35px;
+  color: #4e81e7;
+}
+.offer-item-title{
+text-transform: capitalize;
+margin-bottom: 15px;
+transition: color 0.5s;
+}
+.offer-item-desc{
+  text-transform: capitalize;
+  margin-bottom: 15px;
+  line-height: 1.6;
+  color: #999;
+}
+.offer-item:hover .offer-item-title{
+color: #ffffff;
+}
+/*F. Numbers div */
+.numbers{
+  position: relative;
+  background-image: url(/img/background2.jpg);
+  height: 250px;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.numbers-item{
+  overflow: hidden;
+  padding: 80px 0;
+}
+.number-item{
+  width: 25%;
+  float: left;
+  text-align: center;
+}
+.icon{
+  color: #4e81e7;
+  margin-bottom: 15px;
+}
+.number-item-title{
+  font-size: 30px;
+  font-weight: bold;
+  color: #ffffff;
+}
+.number-item-text{
+  color: #fff;
+}
+/*G. Team div */
+
+.team-content{
+  overflow: hidden;
+}
+.team-item{
+  width: 30%;
+  float: left;
+  background-color: #e8e8e8;
+  padding: 40px 10px;
+  text-align: center;
+}
+.team-img{
+  width: 90%;
+  margin: auto;
+  position: relative;
+}
+.team-overlay{
+ position: absolute; 
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background: rgba(0, 0, 0, 0.3);
+ opacity: 0;
+ visibility: hidden;
+}
+.team-overlay a{
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: #7ba7ff;
+  color: #fff;
+  margin-left:auto ;
+}
+.team-overlay a i{
+line-height: 40px;
+}
+.team-img img{
+  width: 100%;
+}
+.team-info-title{
+  color: #222;
+  margin: 10px 0;
+    text-transform:capitalize;
+    transition: color 0.4s;
+}
+.team-info-text{
+  color: #999;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: color 0.4s;
+}
+.team-item:hover .team-overlay{
+  visibility: visible;
+  opacity: 1;
+}
+.team-item.tb-effect{
+    z-index: 1;
+}
+.team-item:hover .team-info-title{
+    color: #fff;
+}
+.team-item:hover .team-info-text{
+    color: #7ba7ff;
+}
+.team-item.mgg{
+  margin: 0 5%;
+
+}
+/*H. Blog page */
+/*I. contact div */
+/*J. fotar div */
